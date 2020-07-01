@@ -23,16 +23,17 @@ public class OrderController {
     @Resource
     private RestTemplate restTemplate;
 
+    public static final String path = "http://cloud-payment-service";
     @GetMapping("/consumer/payment/get/{id}")
     public CommonResult<Payment> create(@PathVariable("id") Integer id){
-         String path = "http://localhost:8001/payment/get/";
-        return restTemplate.getForObject(path+id,CommonResult.class);
+         String realPath = path + "/payment/get/";
+        return restTemplate.getForObject(realPath+id,CommonResult.class);
     }
 
     @GetMapping("/consumer/payment/create")
     public CommonResult<Payment> create(Payment payment){
-        String path = "http://localhost:8001/payment/create";
-        return restTemplate.postForObject(path,payment,CommonResult.class);
+        String realPath = path + "/payment/create";
+        return restTemplate.postForObject(realPath,payment,CommonResult.class);
     }
 
 }

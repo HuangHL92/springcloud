@@ -6,13 +6,8 @@ import com.hhu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @description:
@@ -28,8 +23,7 @@ public class PayController {
 
     @Value("${server.port}")
     private String serverPort;
-    @Resource
-    private DiscoveryClient discoveryClient;
+
     @PostMapping("/payment/create")
     @ResponseBody
     public CommonResult creat(@RequestBody Payment payment){
@@ -55,18 +49,5 @@ public class PayController {
             return  new CommonResult(444,"查询失败，端口号为："+serverPort,null);
         }
     }
-    
-    @RequestMapping("/getResource")
-    @ResponseBody
-    public DiscoveryClient getResours(){
-        List<String> services = discoveryClient.getServices();
-        for (String service:services){
-            log.info(service);
-        }
-        List<ServiceInstance> instances = discoveryClient.getInstances("cloud-payment-service");
-       for(ServiceInstance serviceInstance:instances){
-           log.info(serviceInstance.getHost()+"\t"+serviceInstance.getUri()+"\t"+serviceInstance.getPort());
-       }
-        return this.discoveryClient;
-    }
+
 }

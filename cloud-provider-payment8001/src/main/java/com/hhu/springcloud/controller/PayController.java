@@ -32,7 +32,7 @@ public class PayController {
     private DiscoveryClient discoveryClient;
     @PostMapping("/payment/create")
     @ResponseBody
-    public CommonResult creat(@RequestBody Payment payment){
+    public  CommonResult creat(@RequestBody Payment payment){
         int i = paymentService.create(payment);
         log.info("插入结果{}",i);
         if(i>0){
@@ -68,5 +68,12 @@ public class PayController {
            log.info(serviceInstance.getHost()+"\t"+serviceInstance.getUri()+"\t"+serviceInstance.getPort());
        }
         return this.discoveryClient;
+    }
+
+    @RequestMapping("/payment/lb")
+    @ResponseBody
+    public String getMyService(){
+
+        return serverPort;
     }
 }

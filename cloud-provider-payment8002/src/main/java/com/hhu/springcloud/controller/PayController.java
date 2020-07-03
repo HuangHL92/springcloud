@@ -50,4 +50,11 @@ public class PayController {
         }
     }
 
+    @RequestMapping("/payment/lb")
+    @ResponseBody
+    public String getMyService(){
+
+        return serverPort;
+    }
+
 }

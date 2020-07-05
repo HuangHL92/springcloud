@@ -49,7 +49,7 @@ public class PayController {
         Payment paymentById = paymentService.getPaymentById(id);
         log.info("查询结果为{}",paymentById);
         if(paymentById != null){
-            return new CommonResult(200,"查询成功，端口号为："+serverPort,paymentById);
+            return new CommonResult(200,"查询kkk成功，端口号为："+serverPort,paymentById);
         }
         else{
             return  new CommonResult(444,"查询失败，端口号为："+serverPort,null);

@@ -5,7 +5,8 @@ eureka:
     register-with-eureka: false
     fetch-registry: true
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+#      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+      defaultZone:  http://localhost:7001/eureka/ # 单机版
 
 # 设置feign客户端超时时间(OpenFeign默认支持ribbon)
 ribbon:
@@ -17,3 +18,7 @@ logging:
   level:
     # feign日志以什么级别监控哪个接口
     com.hhu.springcloud.service.OrderFeignService: debug
+
+feign:
+  hystrix:
+    enabled: true

@@ -70,7 +70,7 @@ public class PayController {
         return this.discoveryClient;
     }
 
-    @RequestMapping("/payment/lb")
+    @GetMapping("/payment/lb")
     @ResponseBody
     public String getMyService(){
 

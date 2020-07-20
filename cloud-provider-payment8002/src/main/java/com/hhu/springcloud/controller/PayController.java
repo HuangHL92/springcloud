@@ -50,7 +50,7 @@ public class PayController {
         }
     }
 
-    @RequestMapping("/payment/lb")
+    @GetMapping("/payment/lb")
     @ResponseBody
     public String getMyService(){
 

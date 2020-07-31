@@ -19,7 +19,7 @@ public class ConfigClientController {
     @Value("${config.info}")
     private String info;
 
-    @GetMapping("/config/message")
+    @GetMapping("/config/info")
     @ResponseBody
     public String GetConfigMessage(){
         return info;
